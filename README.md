@@ -184,6 +184,7 @@ variable, their values, and a brief description.
 | `g:molten_output_win_max_height`              | (`999999`) \| int                                           | Max height of the output window |
 | `g:molten_output_win_max_width`               | (`999999`) \| int                                           | Max width of the output window |
 | `g:molten_output_win_style`                   | (`false`) \| `"minimal"`                                    | Value passed to the `style` option in `:h nvim_open_win()` |
+| `g:molten_output_win_split`                   | (`false`) \| split direction                                | Experimental! Opens output in split instead of float. Only works in nvim > 0.10. Disables other commands. See `:h nvim_open_win()` |
 | `g:molten_save_path`                          | (`stdpath("data").."/molten"`) \| any path to a folder      | Where to save/load data with `:MoltenSave` and `:MoltenLoad` |
 | `g:molten_tick_rate`                          | (`500`) \| `int`                                            | How often (in ms) we poll the kernel for updates. Determines how quickly the ui will update, if you want a snappier experience, you can set this to 150 or 200 |
 | `g:molten_use_border_highlights`              | `true` \| (`false`)                                         | When true, uses different highlights for output border depending on the state of the cell (running, done, error). see [highlights](#highlights) |

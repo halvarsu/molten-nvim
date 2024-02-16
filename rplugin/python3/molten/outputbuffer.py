@@ -304,6 +304,15 @@ class OutputBuffer:
                     win_opts["footer"] = [(f" 󰁅 {hidden_lines} More Lines ", self.options.hl.foot)]
                 win_opts["footer_pos"] = "left"
 
+            if self.options.output_win_split:
+                win_opts["split"] = self.options.output_win_split
+                for key in ['relative','bufpos','row','col','border','title','footer']:
+                    try:
+                        win_opts.pop(key)
+                    except KeyError:
+                        pass
+
+
             if self.display_win is None or not self.display_win.valid:  # open a new window
                 self.display_win = self.nvim.api.open_win(
                     self.display_buf.number,
@@ -318,6 +327,8 @@ class OutputBuffer:
                 self.set_win_option("wrap", self.options.wrap_output)
                 self.set_win_option("cursorline", False)
                 self.canvas.present()
+            elif self.options.output_win_split:
+                pass
             else:  # move the current window
                 self.display_win.api.set_config(win_opts)
 
